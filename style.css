@@ -1,0 +1,113 @@
+/* General body styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f4f4f9, #e8e8f8);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header and log styling */
+#log {
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+#log div {
+    margin-top: 15px;
+}
+
+#status h4 {
+    margin-bottom: 10px;
+    color: #5c67f2;
+    font-size: 1.4rem;
+}
+
+/* Modern button styling */
+button {
+    background: linear-gradient(to right, #5c67f2, #434adf);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    background: linear-gradient(to right, #434adf, #5c67f2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for select elements */
+select {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 2px solid #5c67f2;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+select:hover {
+    border-color: #434adf;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+select:focus {
+    border-color: #434adf;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Flexbox for layout */
+.check-type {
+    display: flex;
+    font-size: 1.6rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+}
+
+.check-type > div {
+    margin: 20px;
+    flex: 1 1 250px;
+    margin-bottom: 0;
+}
+
+#record-info {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #log {
+        margin-left: 5px;
+    }
+
+    .check-type {
+        flex-direction: column;
+    }
+
+    .check-type > div {
+        margin: 15px 0;
+    }
+}
