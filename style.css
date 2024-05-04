@@ -72,26 +72,26 @@ button:hover {
 
 /* Styling for select elements */
 select {
-    padding: 12px 18px;
-    border-radius: 10px;
-    border: 2px solid #5c67f2;
-    background-color: #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    font-size: 1.2rem;
-    color: #333;
-    outline: none;
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
+    padding: 8px 12px; /* Reduced padding */
+    border-radius: 8px; /* Rounded corners */
+    border: 2px solid #5c67f2; /* Blue border */
+    background-color: #fff; /* White background */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 1rem; /* Smaller font size */
+    color: #333; /* Text color */
+    outline: none; /* No outline on focus */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    margin-bottom: 15px; /* Bottom margin */
 }
 
 select:hover {
-    border-color: #434adf;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: #434adf; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
 }
 
 select:focus {
-    border-color: #434adf;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-color: #434adf; /* Darker blue on focus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow on focus */
 }
 
 /* Flexbox for layout */
