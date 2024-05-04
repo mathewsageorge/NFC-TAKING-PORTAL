@@ -29,7 +29,7 @@ const handleNewRecord = async (serialNumber, logData, time, teacher, period, sub
         readSerialNumbers[serialNumber] = true;
     }
     try {
-        await fetch('https://nfc-attendance-taking-portal.onrender.com/record', {
+        await fetch('https://nfcams.onrender.com/record', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (confirm("Are you sure you want to start the class for " + $subject.value + "?")) {
                 try {
-                    const response = await fetch('https://nfc-attendance-taking-portal.onrender.com/start-class', {
+                    const response = await fetch('https://nfcams.onrender.com/start-class', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
