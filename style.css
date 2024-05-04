@@ -22,10 +22,25 @@ body {
     margin-top: 15px;
 }
 
+/* Enhanced status styling */
+#status div {
+    background: #e8e8f8; /* Light background for better visibility */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#status div:hover {
+    transform: translateY(-3px); /* Slight raise effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 #status h4 {
-    margin-bottom: 10px;
-    color: #5c67f2;
-    font-size: 1.4rem;
+    margin-bottom: 5px; /* Adjusted spacing */
+    color: #434adf; /* Slightly darker color for contrast */
+    font-size: 1.5rem; /* Slightly larger font size */
+    font-weight: bold; /* Making the text bold */
 }
 
 /* Modern button styling */
@@ -87,10 +102,18 @@ select:focus {
     margin-bottom: 0;
 }
 
+/* Enhanced record information styling */
 #record-info {
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 0;
+    background: #f4f4f9; /* Light background similar to body gradient */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+}
+
+#record-info:hover {
+    background: #e8e8f8; /* Slightly darker on hover for interactive effect */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive design for mobile devices */
