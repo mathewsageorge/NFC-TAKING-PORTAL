@@ -110,9 +110,12 @@ select:focus {
 }
 
 #record-info {
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 0;
+    background-color: #f2f2f2; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the content */
+    text-align: center; /* Center-align text */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin: 20px; /* Margin around the div */
 }
 
 /* Responsive design for mobile devices */
