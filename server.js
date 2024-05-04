@@ -144,7 +144,7 @@ app.post('/start-class', async (req, res) => {
             "05:39:ea:cc:f7:b0:c1": "mathewsgeorge2003@gmail.com",
             "05:33:96:60:06:b0:c1": "ansurose41@gmail.com",
             "05:36:41:dc:f7:b0:c1": "pta21cs044@cek.ac.in",
-            "05:35:84:cc:f7:b0:c1": "nfcattendancemanagementsystem@gmail.com",
+            "05:35:84:cc:f7:b0:c1": "nehacherian570@gmail.com",
             "05:34:6a:64:26:b0:c1": "adwaithj2003@gmail.com"
         };
 
@@ -152,7 +152,7 @@ app.post('/start-class', async (req, res) => {
 
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial]) {
-                const emailText = `You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
+                const emailText = `Alert From NFCAMS-CEK You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
                 await sendEmail(serialEmails[serial], "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }
