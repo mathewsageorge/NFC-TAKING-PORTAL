@@ -142,9 +142,10 @@ app.post('/start-class', async (req, res) => {
 
         const serialEmails = {
             "05:39:ea:cc:f7:b0:c1": "mathewsgeorge2003@gmail.com",
-            "05:33:96:60:06:b0:c1": "pta21cs044@cek.ac.in",
-            "05:36:41:dc:f7:b0:c1": "ansurose41@gmail.com",
-            "05:35:84:cc:f7:b0:c1": "nfcattendancemanagementsystem@gmail.com"
+            "05:33:96:60:06:b0:c1": "ansurose41@gmail.com",
+            "05:36:41:dc:f7:b0:c1": "pta21cs044@cek.ac.in",
+            "05:35:84:cc:f7:b0:c1": "nfcattendancemanagementsystem@gmail.com",
+            "05:34:6a:64:26:b0:c1": "adwaithj2003@gmail.com"
         };
 
         let absenteesNotified = 0; // Counter for the number of notifications sent
