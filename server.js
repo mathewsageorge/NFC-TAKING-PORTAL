@@ -131,15 +131,14 @@ app.post('/start-class', async (req, res) => {
     const { subject, teacher, readSerialNumbers, period } = req.body;
 
     try {
-        const currentDateTime = new Date(); // Capture the current date and time once
-        const currentDate = currentDateTime.toLocaleDateString(); // Use the same Date object for date
-        const currentTime = currentDateTime.toLocaleTimeString(); // and time to maintain consistency
-
         const record = await TotalClass.findOneAndUpdate(
             { subject, teacher },
             { $inc: { count: 1 } },
             { new: true, upsert: true }
         );
+
+        // Format the date as day-month-year
+        const currentDate = new Date().toLocaleDateString('en-GB'); // 'en-GB' uses day-month-year format
 
         const serialEmails = {
             "05:39:ea:cc:f7:b0:c1": "mathewsgeorge2003@gmail.com",
@@ -153,7 +152,7 @@ app.post('/start-class', async (req, res) => {
 
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial]) {
-                const emailText = `You were marked absent for ${subject} on ${currentDate} at ${currentTime}, during ${period}.`;
+                const emailText = `You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
                 await sendEmail(serialEmails[serial], "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }
