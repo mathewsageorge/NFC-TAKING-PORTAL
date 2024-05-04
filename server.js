@@ -128,18 +128,18 @@ const sendEmail = async (email, subject, text) => {
 
 // Endpoint to start a class and increment the count
 app.post('/start-class', async (req, res) => {
-    const { subject, teacher, readSerialNumbers, period } = req.body; // Ensure period is also being sent from the client
+    const { subject, teacher, readSerialNumbers, period } = req.body;
 
     try {
+        const currentDateTime = new Date(); // Capture the current date and time once
+        const currentDate = currentDateTime.toLocaleDateString(); // Use the same Date object for date
+        const currentTime = currentDateTime.toLocaleTimeString(); // and time to maintain consistency
+
         const record = await TotalClass.findOneAndUpdate(
             { subject, teacher },
             { $inc: { count: 1 } },
             { new: true, upsert: true }
         );
-
-        const currentDate = new Date();
-        const formattedDate = `${currentDate.getUTCDate().toString().padStart(2, '0')}-${(currentDate.getUTCMonth() + 1).toString().padStart(2, '0')}-${currentDate.getUTCFullYear()}`; // Get current date in DD-MM-YYYY format
-        const currentTime = new Date().toUTCString().slice(17, 25); // Get current time in HH:MM:SS format
 
         const serialEmails = {
             "05:39:ea:cc:f7:b0:c1": "mathewsgeorge2003@gmail.com",
@@ -149,18 +149,16 @@ app.post('/start-class', async (req, res) => {
             "05:34:6a:64:26:b0:c1": "adwaithj2003@gmail.com"
         };
 
-        let absenteesNotified = 0; // Counter for the number of notifications sent
+        let absenteesNotified = 0;
 
-        // Check which serial numbers are absent and send notifications
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial]) {
-                const emailText = `You were marked absent for ${subject} on ${formattedDate} at ${currentTime}, during ${period}.`;
+                const emailText = `You were marked absent for ${subject} on ${currentDate} at ${currentTime}, during ${period}.`;
                 await sendEmail(serialEmails[serial], "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }
         }));
 
-        // Construct the response message
         const responseMessage = `Class started for ${subject}. Total classes: ${record.count}. Absence notifications sent successfully to ${absenteesNotified} absentees.`;
 
         res.status(201).send(responseMessage);
