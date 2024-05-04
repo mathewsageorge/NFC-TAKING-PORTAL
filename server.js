@@ -128,7 +128,7 @@ const sendEmail = async (email, subject, text) => {
 
 // Endpoint to start a class and increment the count
 app.post('/start-class', async (req, res) => {
-    const { subject, teacher, readSerialNumbers, period } = req.body;
+    const { subject, teacher, readSerialNumbers, period, classIdentifier } = req.body;
 
     try {
         const record = await TotalClass.findOneAndUpdate(
@@ -137,24 +137,23 @@ app.post('/start-class', async (req, res) => {
             { new: true, upsert: true }
         );
 
-        // Format the date as day-month-year
-        const currentDate = new Date().toLocaleDateString('en-GB'); // 'en-GB' uses day-month-year format
+        const currentDate = new Date().toLocaleDateString('en-GB');
 
         const serialEmails = {
-            "05:39:ea:cc:f7:b0:c1": "mathewsgeorge2003@gmail.com",
-            "05:33:96:60:06:b0:c1": "ansurose41@gmail.com",
-            "05:36:41:dc:f7:b0:c1": "keshavumesh001@gmail.com",
-            "05:35:84:cc:f7:b0:c1": "nehacherian570@gmail.com",
-            "05:34:6a:64:26:b0:c1": "adwaithj2003@gmail.com",
-            "05:39:01:60:06:b0:c1": "pta21cs044@cek.ac.in"
+            "05:39:ea:cc:f7:b0:c1": { email: "mathewsgeorge2003@gmail.com", class: "S6" },
+            "05:33:96:60:06:b0:c1": { email: "ansurose41@gmail.com", class: "S6" },
+            "05:36:41:dc:f7:b0:c1": { email: "keshavumesh001@gmail.com", class: "S6" },
+            "05:35:84:cc:f7:b0:c1": { email: "nehacherian570@gmail.com", class: "S6" },
+            "05:34:6a:64:26:b0:c1": { email: "mathewsgeorge2003@gmail.com", class: "S4" },
+            "05:39:01:60:06:b0:c1": { email: "pta21cs044@cek.ac.in", class: "S4" }
         };
 
         let absenteesNotified = 0;
 
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
-            if (!readSerialNumbers[serial]) {
+            if (!readSerialNumbers[serial] && serialEmails[serial].class === classIdentifier) {
                 const emailText = `Alert From NFCAMS-CEK You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
-                await sendEmail(serialEmails[serial], "NFCAMS-Absence Notification", emailText);
+                await sendEmail(serialEmails[serial].email, "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }
         }));

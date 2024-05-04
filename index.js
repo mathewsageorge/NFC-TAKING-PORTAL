@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return; // Stop further execution if no teacher is selected
             }
 
+            const classIdentifier = $subject.value.slice(-2); // Extract last two characters as class identifier
+
             if (confirm("Are you sure you want to start the class for " + $subject.value + "?")) {
                 try {
                     const response = await fetch('https://nfc-attendance-taking-portal.onrender.com/start-class', {
@@ -71,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         body: JSON.stringify({
                             subject: $subject.value,
                             teacher: $teacher.value,
-                            period: $period.value, // Make sure this is being captured
+                            period: $period.value,
+                            classIdentifier, // Send class identifier to the server
                             readSerialNumbers: readSerialNumbers // Include this in the body
                         }),
                     });
