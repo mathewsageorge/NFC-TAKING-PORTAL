@@ -7,7 +7,7 @@
     <title>NFCAMS</title>
 </head>
 <body>
-    <h2>NFC Attendance Taking Portal </h2>
+    <h2>NFC Attendance Taking Portal</h2>
     <div id="status">
         <h4>Hi There 👋 Welcome to NFCAMS</h4>
         <button id="start-btn">Click Here to Start Taking Attendance</button>
@@ -15,11 +15,10 @@
     <div>
         <label for="teacher">Teacher Name:</label>
         <select id="teacher" onchange="filterSubjects()">
-            <option value="">Select Teacher</option> <!-- Default option prompting to select a teacher -->
+            <option value="">Select Teacher</option>
             <option value="JINI">JINI MISS</option>
             <option value="ANITHA">ANITHA MISS</option>
             <option value="NIMITHA">NIMITHA MISS</option>
-            <!-- Add more options for other teachers -->
         </select>
     </div>
     <div>
@@ -31,17 +30,18 @@
             <option value="Period 4">Period 4</option>
             <option value="Period 5">Period 5</option>
             <option value="Period 6">Period 6</option>
-            <!-- Add more options for other periods -->
         </select>
     </div>
     <div>
         <label for="subject">Subject:</label>
         <select id="subject">
-            <option value="">Select Teacher First </option>
+            <option value="">Select Teacher First</option>
         </select>
     </div>
-    </div> <!-- Corrected closing tag for check-type div -->
-    <div id="record-info"></div>
+    <div id="record-info">
+        <h4>Record Information:</h4>
+        <p>Please tap an NFC tag to display record information here.</p>
+    </div>
     <button id="start-class-btn" style="background-color: red;">Start Class</button>
     <h3>(Click the Start Class button only after taking the Attendance of all students)</h3>
    
