@@ -22,6 +22,28 @@ body {
     margin-top: 15px;
 }
 
+#status {
+    background-color: #f2f2f2; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the content */
+    text-align: center; /* Center-align text */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin: 20px; /* Margin around the div */
+}
+#start-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding inside the button */
+    text-align: center; /* Center-align text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block level */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin around the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners for the button */
+}
+
 #status h4 {
     margin-bottom: 10px;
     color: #5c67f2;
