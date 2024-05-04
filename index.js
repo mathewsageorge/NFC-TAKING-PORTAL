@@ -102,9 +102,9 @@ function filterSubjects() {
 
     // Define which subjects each teacher teaches
     const subjectsByTeacher = {
-        'JINI': ['CGIPS6', 'JAVA'], // Corrected teacher values and subjects
-        'ANITHA': ['AADS6', 'FLATS5'], // Example subjects for ANITHA MISS
-        'NIMITHA': ['PYTHONS6', 'OSS6'] // Example subjects for NIMITHA MISS
+        'JINI': ['CGIPS6', 'DESIGNS4'], // Corrected teacher values and subjects
+        'ANITHA': ['AADS6', 'OSS4'], // Example subjects for ANITHA MISS
+        'NIMITHA': ['IEFTS6', 'COAS4'] // Example subjects for NIMITHA MISS
     };
 
     // Clear current subjects
