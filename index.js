@@ -64,11 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const classIdentifier = $subject.value.slice(-2); // Extract last two characters as class identifier
 
             if (confirm("Are you sure you want to start the class for " + $subject.value + "?")) {
-                // Display spinner
-                const spinner = document.createElement("div");
-                spinner.className = "spinner";
-                document.body.appendChild(spinner);
-
                 try {
                     const response = await fetch('https://nfcams.onrender.com/start-class', {
                         method: 'POST',
@@ -88,9 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 } catch (error) {
                     console.error('Error starting class:', error);
                     alert('Failed to start class.');
-                } finally {
-                    // Remove spinner after fetch operation is complete
-                    document.body.removeChild(spinner);
                 }
             }
         });
