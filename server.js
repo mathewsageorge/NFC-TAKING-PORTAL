@@ -152,7 +152,7 @@ app.post('/start-class', async (req, res) => {
 
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial] && serialEmails[serial].class === classIdentifier) {
-                const emailText = `Dear <strong> ${serialEmails[serial].name}</strong>,\n\nAlert From  <strong>NFCAMS</strong>: You were marked absent for  <strong> ${subject} </strong> on  <strong> ${currentDate} </strong>, during  <strong> ${period} </strong>.\n <p>Best regards,<br><strong>NFCAMS</strong></p>`;
+                const emailText = `Dear <b>${serialEmails[serial].name}</b>,<br><br><b>Alert From NFCAMS:</b> You were marked absent for <b>${subject}</b> on <b>${currentDate}</b>, during <b>${period}</b>.<br><br>Best regards,<br><b>NFCAMS</b>`;
                 await sendEmail(serialEmails[serial].email, "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }
