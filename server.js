@@ -110,12 +110,12 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send email
-const sendEmail = async (email, subject, text) => {
+const sendEmail = async (email, subject, html) => {
     const mailOptions = {
         from: 'mathewsgeorge202@gmail.com',
         to: email,
         subject: subject,
-        text: text
+        html: html  // Changed from text to html
     };
 
     try {
