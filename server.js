@@ -140,19 +140,19 @@ app.post('/start-class', async (req, res) => {
         const currentDate = new Date().toLocaleDateString('en-GB');
 
         const serialEmails = {
-            "05:39:ea:cc:f7:b0:c1": { email: "mathewsgeorge2003@gmail.com", class: "S6" },
-            "05:33:96:60:06:b0:c1": { email: "ansurose41@gmail.com", class: "S6" },
-            "05:36:41:dc:f7:b0:c1": { email: "keshavumesh001@gmail.com", class: "S6" },
-            "05:35:84:cc:f7:b0:c1": { email: "nehacherian570@gmail.com", class: "S6" },
-            "05:34:6a:64:26:b0:c1": { email: "", class: "S4" },
-            "05:39:01:60:06:b0:c1": { email: "pta21cs044@cek.ac.in", class: "S4" }
+            "05:39:ea:cc:f7:b0:c1": { email: "mathewsgeorge2003@gmail.com", class: "S6", name: "Mathews A George" },
+            "05:33:96:60:06:b0:c1": { email: "ansurose41@gmail.com", class: "S6", name: "Ansu Rose Joseph" },
+            "05:36:41:dc:f7:b0:c1": { email: "keshavumesh001@gmail.com", class: "S6", name: "Keshav Umesh" },
+            "05:35:84:cc:f7:b0:c1": { email: "nehacherian570@gmail.com", class: "S6", name: "Neha Sara Cherian" },
+            "05:34:6a:64:26:b0:c1": { email: "", class: "S4", name: "Unknown" },
+            "05:39:01:60:06:b0:c1": { email: "pta21cs044@cek.ac.in", class: "S4", name: "PTA Student" }
         };
 
         let absenteesNotified = 0;
 
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial] && serialEmails[serial].class === classIdentifier) {
-                const emailText = `Alert From NFCAMS-CEK You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
+                const emailText = `Dear <strong> ${serialEmails[serial].name}</strong>,\n\nAlert From  <strong>NFCAMS</strong>: You were marked absent for  <strong> ${subject} </strong> on  <strong> ${currentDate} </strong>, during  <strong> ${period} </strong>.\n <p>Best regards,<br><strong>NFCAMS</strong></p>`;
                 await sendEmail(serialEmails[serial].email, "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }

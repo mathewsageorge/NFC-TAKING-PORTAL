@@ -54,6 +54,12 @@ const handleNewRecord = async (serialNumber, logData, time, teacher, period, sub
 
 document.addEventListener('DOMContentLoaded', function () {
     const startClassBtn = document.getElementById("start-class-btn");
+    const loadingIndicator = document.createElement("div");
+    loadingIndicator.id = "loading-indicator";
+    // loadingIndicator.textContent = "Loading..."; // Remove or comment out this line
+    loadingIndicator.style.display = "none"; // Initially hidden
+    document.body.appendChild(loadingIndicator);
+
     if (startClassBtn) {
         startClassBtn.addEventListener("click", async () => {
             if (!$teacher.value) {
@@ -64,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const classIdentifier = $subject.value.slice(-2); // Extract last two characters as class identifier
 
             if (confirm("Are you sure you want to start the class for " + $subject.value + "?")) {
+                loadingIndicator.style.display = "block"; // Show loading indicator
                 try {
                     const response = await fetch('https://nfcams.onrender.com/start-class', {
                         method: 'POST',
@@ -83,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 } catch (error) {
                     console.error('Error starting class:', error);
                     alert('Failed to start class.');
+                } finally {
+                    loadingIndicator.style.display = "none"; // Hide loading indicator
                 }
             }
         });
