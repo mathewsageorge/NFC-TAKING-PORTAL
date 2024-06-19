@@ -110,12 +110,12 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send email
-const sendEmail = async (email, subject, html) => {
+const sendEmail = async (email, subject, text) => {
     const mailOptions = {
         from: 'mathewsgeorge202@gmail.com',
         to: email,
         subject: subject,
-        html: html  // Changed from text to html
+        text: text
     };
 
     try {
@@ -152,7 +152,7 @@ app.post('/start-class', async (req, res) => {
 
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial] && serialEmails[serial].class === classIdentifier) {
-                const emailText = `Dear <b>${serialEmails[serial].name}</b>,<br><br><b>Alert From NFCAMS:</b> You were marked absent for <b>${subject}</b> on <b>${currentDate}</b>, during <b>${period}</b>.<br><br>Best regards,<br><b>NFCAMS</b>`;
+                const emailText = `Dear ${serialEmails[serial].name},\n\nAlert From NFCAMS: You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
                 await sendEmail(serialEmails[serial].email, "NFCAMS-Absence Notification", emailText);
                 absenteesNotified++;
             }

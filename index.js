@@ -29,7 +29,7 @@ const handleNewRecord = async (serialNumber, logData, time, teacher, period, sub
         readSerialNumbers[serialNumber] = true;
     }
     try {
-        await fetch('https://nfcams.onrender.com/record', {
+        await fetch('https://nfc-portal-test-test-test.onrender.com/record', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,6 +60,55 @@ document.addEventListener('DOMContentLoaded', function () {
     loadingIndicator.style.display = "none"; // Initially hidden
     document.body.appendChild(loadingIndicator);
 
+    const subjectSelect = document.getElementById('subject');
+    subjectSelect.style.display = "none"; // Hide subject dropdown initially
+
+    // Add event listener to teacher select dropdown
+    $teacher.addEventListener("change", () => {
+        let teacherName = $teacher.value;
+        let fullName = "";
+
+        switch (teacherName) {
+            case 'JINI':
+                fullName = "Jini George";
+                break;
+            case 'ANITHA':
+                fullName = "Anitha Jose";
+                break;
+            case 'NIMITHA':
+                fullName = "Nimitha Mary Mohan";
+                break;
+            default:
+                fullName = teacherName; // Use the teacher name as is if not found in the switch case
+        }
+
+        let password = prompt(`Enter password for ${fullName} to take attendance using NFC`);
+        let correctPassword = false;
+
+        switch (teacherName) {
+            case 'JINI':
+                correctPassword = password === '11';
+                break;
+            case 'ANITHA':
+                correctPassword = password === '22';
+                break;
+            case 'NIMITHA':
+                correctPassword = password === '33';
+                break;
+            default:
+                correctPassword = true; // No password required for other teachers
+        }
+
+        if (!correctPassword) {
+            alert(`Incorrect password for ${fullName}. Please enter the correct password for ${fullName}.`);
+            $teacher.value = ""; // Reset the selected teacher
+            subjectSelect.style.display = "none"; // Hide subject dropdown
+        } else {
+            filterSubjects(); // Update subjects based on the selected teacher
+            subjectSelect.style.display = "block"; // Show subject dropdown
+        }
+    });
+
     if (startClassBtn) {
         startClassBtn.addEventListener("click", async () => {
             if (!$teacher.value) {
@@ -72,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (confirm("Are you sure you want to start the class for " + $subject.value + "?")) {
                 loadingIndicator.style.display = "block"; // Show loading indicator
                 try {
-                    const response = await fetch('https://nfcams.onrender.com/start-class', {
+                    const response = await fetch('https://nfc-portal-test-test-test.onrender.com/start-class', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
