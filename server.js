@@ -163,7 +163,7 @@ app.post('/start-class', async (req, res) => {
         await Promise.all(Object.keys(serialEmails).map(async (serial) => {
             if (!readSerialNumbers[serial] && serialEmails[serial].class === classIdentifier) {
                 const emailText = `Dear ${serialEmails[serial].name},\n\nAlert From NFCAMS: You were marked absent for ${subject} on ${currentDate}, during ${period}.`;
-                await sendEmail(serialEmails[serial].email, "NFCAMS-Absence Notification", emailText);
+                await sendEmail(serialEmails[serial].email, "NFCAMS-Absence Notification", emailText);  
                 absenteesNotified++;
             }
         }));
