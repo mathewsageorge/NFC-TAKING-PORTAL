@@ -109,15 +109,16 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Function to send email with HTML content
+/// Function to send email with HTML content and mark as important
 const sendEmail = async (email, subject, text) => {
     const mailOptions = {
         from: 'nfcamsofficial@gmail.com',
         to: email,
         subject: subject,
+        priority: 'high',  // Mark the email as high priority
         html: `
             <div style="font-family: Arial, sans-serif; font-size: 16px;">
-                <p>${text}</p>
+                <p><strong>Important:</strong> ${text}</p>
                 <p style="font-size: 18px; font-weight: bold;">Best regards,</p>
                 <p style="font-size: 18px; font-weight: bold;">NFCAMS Team</p>
                 <hr>
@@ -135,7 +136,6 @@ const sendEmail = async (email, subject, text) => {
         console.error('Failed to send email:', error);
     }
 };
-
 // Endpoint to start a class and increment the count
 app.post('/start-class', async (req, res) => {
     const { subject, teacher, readSerialNumbers, period, classIdentifier } = req.body;
