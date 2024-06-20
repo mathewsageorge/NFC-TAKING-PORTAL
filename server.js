@@ -119,8 +119,8 @@ const sendEmail = async (email, subject, text) => {
         html: `
             <div style="font-family: Arial, sans-serif; font-size: 16px;">
                 <p><strong>Important:</strong> ${text}</p>
-                <p style="font-size: 12px; ">Best regards,</p>
-                <p style="font-size: 12px; ">NFCAMS Team</p>
+                <p style="font-size: 13px; color: grey; ">Best regards,</p>
+                <p style="font-size: 13px; color: grey; ">NFCAMS Team</p>
                 <hr>
                 <footer style="font-size: 14px; color: grey;">
                     <p>Copyright © 2024 NFCAMS. All rights reserved.</p>
