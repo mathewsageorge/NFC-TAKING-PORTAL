@@ -109,13 +109,23 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Function to send email
+// Function to send email with HTML content
 const sendEmail = async (email, subject, text) => {
     const mailOptions = {
         from: 'nfcamsofficial@gmail.com',
         to: email,
         subject: subject,
-        text: text
+        html: `
+            <div style="font-family: Arial, sans-serif; font-size: 16px;">
+                <p>${text}</p>
+                <p style="font-size: 18px; font-weight: bold;">Best regards,</p>
+                <p style="font-size: 18px; font-weight: bold;">NFCAMS Team</p>
+                <hr>
+                <footer style="font-size: 14px; color: grey;">
+                    <p>Copyright © 2024 NFCAMS. All rights reserved.</p>
+                </footer>
+            </div>
+        `
     };
 
     try {
