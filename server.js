@@ -104,8 +104,8 @@ const TotalClass = mongoose.model('TotalClass', totalClassSchema);
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'mathewsgeorge202@gmail.com',
-        pass: 'lhmw gvsd pydu wecj'
+        user: 'nfcamsofficial@gmail.com',
+        pass: 'tdrp soek zybx damz'
     }
 });
 
