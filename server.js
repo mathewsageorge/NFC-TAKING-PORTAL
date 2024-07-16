@@ -10,7 +10,7 @@ app.use(cors({ origin: "*" }));
 const port = process.env.PORT || 3000;
 
 // Connect to MongoDB Atlas
-mongoose.connect('mongodb+srv://mathewsgeorge202:ansu@cluster0.ylyaonw.mongodb.net/NFC', {
+mongoose.connect('mongodb+srv://mathewsgeorge202:#@cluster0.ylyaonw.mongodb.net/NFC', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
