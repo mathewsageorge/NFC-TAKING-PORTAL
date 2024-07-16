@@ -1,7 +1,15 @@
 # NFC Attendance Management System (NFCAMS)
 
 ## Description
-NFC Attendance Management System (NFCAMS) is a project developed by Mathews A George and Ansu Rose Joseph. This system utilizes NFC technology for efficient attendance tracking in educational institutions. Teachers can use NFC tags to mark student attendance, and the system provides features for class management and absence notifications.
+NFC Attendance Management System (NFCAMS) is a comprehensive solution developed by Mathews A George and Ansu Rose Joseph for automating attendance tracking in educational institutions. The system leverages NFC (Near Field Communication) technology to streamline the process of marking student attendance. It includes a server-side component for data management and a client-side web interface for teachers to interact with.
+
+## Key Features
+- **NFC Tag Integration**: Teachers can use NFC tags to quickly mark student attendance by tapping the tags.
+- **Dynamic Subject Selection**: The system allows teachers to select subjects based on the teacher's profile, ensuring accurate attendance tracking.
+- **Class Management**: Teachers can start classes, increment class counts, and receive absence notifications for students who are marked absent.
+- **Email Notifications**: Absentees are automatically notified via email, providing a seamless communication channel.
+- **Database Integration**: Utilizes MongoDB for storing attendance records and class information securely.
+- **User-Friendly Interface**: The web interface offers an intuitive design for easy navigation and interaction.
 
 ## Developers
 - **Mathews A George**
